@@ -1,5 +1,7 @@
-var caixa = require('./caixa');
+const caixa = require('./caixa');
 const readline = require('readline')
+const models = require ('./models')
+const notas = models.notas
 
 const rl = readline.createInterface({
     input: process.stdin,
@@ -8,13 +10,14 @@ const rl = readline.createInterface({
 
 rl.question("How much do you want to withdrawl?  ", (answer) => {
     const output = caixa.getNotas(answer)
-    if (!output){
+    if (output === 0){
         rl.write('Invalid value, please try again.')
     } else {
-        rl.write('You should receive ' + output + ' bills.')
-    //     rl.write('\nHere is the detailed information for this operation' + 
-    //              '\
-    //      )
+        rl.write('\nYou should receive ' + output.total + ' bills.')
+        rl.write(' You can find more detail about the transaction below:')
+        for(var i = 0; i < notas.length; i++){
+            rl.write('\n' + notas[i] + '$ bills: ' + output[notas[i]])
+        }
     }
     rl.close()
 })
