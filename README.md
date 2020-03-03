@@ -7,7 +7,7 @@ The output is a total of bills withdrawn and the detailed information regarding 
 
 This repository has 3 main files:
 
-* **index.js**: controlls all execution and CLI interface
+* **index.js**: controlls all execution and CLI interaction
 
 * **caixa.js**: controlls the business logic to solve the puzzle
 
